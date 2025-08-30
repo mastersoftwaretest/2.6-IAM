@@ -4,7 +4,7 @@ locals {
 
 
 resource "aws_iam_role" "role_example" {
- name = "${local.name_prefix}-role-example"
+ name = "${local.name_prefix}-dynamodb-read-role"
 
 
  assume_role_policy = jsonencode({
@@ -43,7 +43,7 @@ data "aws_iam_policy_document" "policy_example" {
 
 
 resource "aws_iam_policy" "policy_example" {
- name = "${local.name_prefix}-policy-example"
+ name = "${local.name_prefix}-dynamodb-read"
 
 
  ## Option 1: Attach data block policy document
@@ -60,7 +60,7 @@ resource "aws_iam_role_policy_attachment" "attach_example" {
 
 
 resource "aws_iam_instance_profile" "profile_example" {
- name = "${local.name_prefix}-profile-example"
+ name = "${local.name_prefix}-dynamodb-read-profile"
  role = aws_iam_role.role_example.name
 }
 
